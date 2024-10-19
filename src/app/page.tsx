@@ -2,7 +2,7 @@
 
 import Head from 'next/head';
 import { useState } from 'react';
-import deck from '@/deck';
+import { deck, replaceSymbolsWithImages } from '@/deck';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
@@ -36,7 +36,6 @@ export default function Home() {
   const groupedDeck = groupByType(filteredDeck);
 
   return (
-
       <div className="container mx-auto">
         <Head>
           <title>MTG Deck</title>
@@ -53,7 +52,7 @@ export default function Home() {
 
         {Object.keys(groupedDeck).map((type, index) => (
             <div key={index} className="mb-8 justify-center items-center flex-col">
-              <h2 className="text-2xl font-bold mb-4 text-center font-sans">{type}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-center font-sans select-none">{type}</h2>
               <Swiper
                   spaceBetween={20}
                   breakpoints={{
@@ -104,10 +103,10 @@ export default function Home() {
                       </button>
                       <h3 className="text-xl font-bold mb-4">{selectedCard.name}</h3>
                       <p className="text-gray-700">
-                        <strong>Descrição:</strong>{selectedCard.description}
+                        <strong>Descrição:</strong>{replaceSymbolsWithImages(selectedCard.description)}
                       </p>
                       <p className="text-gray-700 mt-2">
-                      <strong>Como usar:</strong> {selectedCard.usage}
+                        <strong>Como usar:</strong> {selectedCard.usage}
                       </p>
                     </div>
                   </div>
