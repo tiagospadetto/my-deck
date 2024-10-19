@@ -80,7 +80,7 @@ export default function Home() {
                         <img
                             src={card.image}
                             alt={card.name}
-                            className="w-[80%] h-auto"
+                            className="w-[80%] h-auto select-none"
                         />
                       </div>
                     </SwiperSlide>
